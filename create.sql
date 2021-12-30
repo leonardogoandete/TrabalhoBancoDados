@@ -1,3 +1,4 @@
+-- create tables --
 CREATE TABLE Usuario (
 ID_Conta number constraint pk_Usuario primary key,
 Email varchar2(40) constraint nemail_Email not null,
@@ -68,6 +69,7 @@ ID_Montagem number,
 constraint pk_PC_Memoria primary key(ID_Memoria,ID_Montagem)
 );
 
+-- alter tables --
 alter table PC add
 (constraint fk_PlacaMae_ID_PlacaMae foreign key(ID_PlacaMae) references PlacaMae(ID_PlacaMae),
 constraint fk_Usuario_ID_Conta foreign key(ID_Conta) references Usuario(ID_Conta),
@@ -89,6 +91,7 @@ alter table PC_Memoria add
 (constraint fk_Memoria2_ID_Memoria foreign key(ID_Memoria) references Memoria(ID_Memoria),
 constraint fk_PC2_ID_Montagem foreign key(ID_Montagem) references PC(ID_Montagem));
 
+-- create sequences --
 CREATE SEQUENCE a_Usuario
 start with 100000
 maxvalue 199999
