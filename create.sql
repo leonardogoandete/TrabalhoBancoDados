@@ -30,8 +30,8 @@ Valor number constraint valorPlacaVideo_Valor not null
 
 CREATE TABLE PlacaMae (
 ID_PlacaMae number constraint pk_PlacaMae PRIMARY KEY,
-NOME varchar2(20) constraint nomePlacaMae_NOME not null,
-MODELO varchar2(20) constraint modeloPlacaMae_MODELO not null,
+NOME varchar2(40) constraint nomePlacaMae_NOME not null,
+MODELO varchar2(40) constraint modeloPlacaMae_MODELO not null,
 Arquitetura varchar2(20)constraint arquiteturaPlacaMae_Arquitetura not null,
 Soquete varchar2(20) constraint soquetePlacaMae_Soquete not null,
 Valor number constraint valorPlacaMae_Valor not null
