@@ -87,7 +87,7 @@ constraint fk_Memoria_ID_Memoria foreign key(ID_Memoria) references Memoria(ID_M
 
 alter table PC_PlacaVideo add
 (constraint fk_PC_ID_Montagem foreign key(ID_Montagem) references PC(ID_Montagem),
-constraint fk_PlacaVideo_ID_PlacaVideo foreign key(ID_PlacaVideo) references PlacaVideo(ID_PlacaVideo));
+constraint fk_PlacaVideoPc_ID_PlacaVideo foreign key(ID_PlacaVideo) references PlacaVideo(ID_PlacaVideo));
 
 alter table PC_Memoria add
 (constraint fk_Memoria2_ID_Memoria foreign key(ID_Memoria) references Memoria(ID_Memoria),
