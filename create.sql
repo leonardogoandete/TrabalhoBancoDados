@@ -1,13 +1,12 @@
--- create tables --
 CREATE TABLE Usuario (
 ID_Conta number constraint pk_Usuario primary key,
 Email varchar2(40) constraint nemail_Email not null,
-Nome varchar2(40)
+Nome varchar2(40) constraint nnome_Nome not null
 );
 
 CREATE TABLE CPU (
 ID_CPU number PRIMARY KEY,
-MODELO varchar2(20) constraint modeloCPU_MODELO not null,
+MODELO varchar2(30) constraint modeloCPU_MODELO not null,
 Soquete varchar2(20) constraint soqueteCPU_CPU not null,
 Arquitetura varchar2(20) constraint arquiteturaCPU_Arquitetura not null,
 Valor number constraint valorCPU_Valor not null
@@ -39,10 +38,11 @@ Valor number constraint valorPlacaMae_Valor not null
 
 CREATE TABLE PC (
 ID_Montagem number constraint pk_PC PRIMARY KEY,
-ValorTotal number constraint nvalortotal_ValorTotal not null,
-ID_PlacaMae number,
-ID_Conta number,
-ID_CPU number
+ID_PlacaMae number constraint nPlacaMae_PlacaMae not null,
+ID_Conta number constraint nIDConta_ID_Conta not null,
+ID_CPU number constraint nIDCPU_ID_CPU not null,
+ID_PlacaVideo number constraint nIDPlacaVideo_ID_PlacaVideo not null,
+ID_Memoria number constraint nIDMemoria_ID_Memoria not null
 );
 
 CREATE TABLE CPU_PlacaMae (
@@ -69,11 +69,13 @@ ID_Montagem number,
 constraint pk_PC_Memoria primary key(ID_Memoria,ID_Montagem)
 );
 
--- create constraint --
 alter table PC add
 (constraint fk_PlacaMae_ID_PlacaMae foreign key(ID_PlacaMae) references PlacaMae(ID_PlacaMae),
 constraint fk_Usuario_ID_Conta foreign key(ID_Conta) references Usuario(ID_Conta),
-constraint fk_CPU_ID_CPU foreign key(ID_CPU) references CPU(ID_CPU));
+constraint fk_CPU_ID_CPU foreign key(ID_CPU) references CPU(ID_CPU),
+constraint fk_PlacaVideo_ID_PlacaVideo foreign key(ID_PlacaVideo) references PlacaVideo(ID_PlacaVideo),
+constraint fk_MemoriaPC_ID_Memoria foreign key(ID_Memoria) references Memoria(ID_Memoria)
+);
 
 alter table CPU_PlacaMae add
 (constraint fk_CPU2_ID_CPU foreign key(ID_CPU) references CPU(ID_CPU),
@@ -91,7 +93,6 @@ alter table PC_Memoria add
 (constraint fk_Memoria2_ID_Memoria foreign key(ID_Memoria) references Memoria(ID_Memoria),
 constraint fk_PC2_ID_Montagem foreign key(ID_Montagem) references PC(ID_Montagem));
 
--- create sequences --
 CREATE SEQUENCE a_Usuario
 start with 100000
 maxvalue 199999
@@ -121,5 +122,3 @@ CREATE SEQUENCE b_PC
 start with 2000
 maxvalue 2999
 increment by 1;
-
--- create constraints --
