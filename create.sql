@@ -69,7 +69,7 @@ ID_Montagem number,
 constraint pk_PC_Memoria primary key(ID_Memoria,ID_Montagem)
 );
 
--- alter tables --
+-- create constraint --
 alter table PC add
 (constraint fk_PlacaMae_ID_PlacaMae foreign key(ID_PlacaMae) references PlacaMae(ID_PlacaMae),
 constraint fk_Usuario_ID_Conta foreign key(ID_Conta) references Usuario(ID_Conta),
@@ -121,3 +121,5 @@ CREATE SEQUENCE b_PC
 start with 2000
 maxvalue 2999
 increment by 1;
+
+-- create constraints --
