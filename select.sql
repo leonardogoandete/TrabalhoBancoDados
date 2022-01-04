@@ -17,3 +17,10 @@ SELECT C.ID_Montagem AS ID_PC, U.Nome AS NOME_USUARIO, M.Modelo AS NOME_DA_PLACA
     INNER JOIN CPU P ON C.ID_CPU = P.ID_CPU
     INNER JOIN Memoria ME ON C.ID_Memoria = ME.ID_Memoria
     INNER JOIN PlacaVideo PV ON C.ID_PlacaVideo = PV.ID_PlacaVideo;
+
+-- exibe montagens com valores acima de 700 --
+SELECT U.ID_Conta AS ID_USUARIO, M.NOME AS NOME_DA_PLACA_MÃE, M.Valor AS VALOR_PLACA_MÃE
+    FROM PC C
+    INNER JOIN Usuario U ON C.ID_Conta = U.ID_Conta
+    INNER JOIN PlacaMae M ON C.ID_PlacaMae = M.ID_PlacaMae
+    GROUP BY U.ID_Conta, M.NOME, M.Valor HAVING (M.Valor) > 700;

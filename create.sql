@@ -41,7 +41,7 @@ ID_Montagem number constraint pk_PC PRIMARY KEY,
 ID_PlacaMae number constraint nPlacaMae_PlacaMae not null,
 ID_Conta number constraint nIDConta_ID_Conta not null,
 ID_CPU number constraint nIDCPU_ID_CPU not null,
-ID_PlacaVideo number constraint nIDPlacaVideo_ID_PlacaVideo not null,
+ID_PlacaVideo number,
 ID_Memoria number constraint nIDMemoria_ID_Memoria not null
 );
 
