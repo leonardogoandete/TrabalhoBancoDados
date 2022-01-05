@@ -70,7 +70,7 @@ constraint pk_PC_Memoria primary key(ID_Memoria,ID_Montagem)
 alter table PC add
 (constraint fk_PlacaMae_ID_PlacaMae foreign key(ID_PlacaMae) references PlacaMae(ID_PlacaMae),
 constraint fk_Usuario_ID_Conta foreign key(ID_Conta) references Usuario(ID_Conta),
-constraint fk_CPU_ID_CPU foreign key(ID_CPU) references CPU(ID_CPU),
+constraint fk_CPU_ID_CPU foreign key(ID_CPU) references CPU(ID_CPU)
 );
 
 alter table CPU_PlacaMae add
