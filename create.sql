@@ -58,7 +58,7 @@ constraint pk_PlacaMaeMemoria primary key(ID_Memoria,ID_PlacaMae)
 CREATE TABLE PC_PlacaVideo (
 ID_Montagem number,
 ID_PlacaVideo number,
-constraint pk_PC_PlacaVideo primary key(ID_Montagem,ID_PlacaVideo)
+constraint pk_PC_PlacaVideo primary key(ID_Montagem)
 );
 
 CREATE TABLE PC_Memoria (
@@ -82,8 +82,7 @@ alter table PlacaMaeMemoria add
 constraint fk_Memoria_ID_Memoria foreign key(ID_Memoria) references Memoria(ID_Memoria));
 
 alter table PC_PlacaVideo add
-(constraint fk_PC_ID_Montagem foreign key(ID_Montagem) references PC(ID_Montagem),
-constraint fk_PlacaVideoPc_ID_PlacaVideo foreign key(ID_PlacaVideo) references PlacaVideo(ID_PlacaVideo));
+(constraint fk_PC_ID_Montagem foreign key(ID_Montagem) references PC(ID_Montagem));
 
 alter table PC_Memoria add
 (constraint fk_Memoria2_ID_Memoria foreign key(ID_Memoria) references Memoria(ID_Memoria),
