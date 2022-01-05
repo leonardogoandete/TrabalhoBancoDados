@@ -40,9 +40,7 @@ CREATE TABLE PC (
 ID_Montagem number constraint pk_PC PRIMARY KEY,
 ID_PlacaMae number constraint nPlacaMae_PlacaMae not null,
 ID_Conta number constraint nIDConta_ID_Conta not null,
-ID_CPU number constraint nIDCPU_ID_CPU not null,
-ID_PlacaVideo number,
-ID_Memoria number constraint nIDMemoria_ID_Memoria not null
+ID_CPU number constraint nIDCPU_ID_CPU not null
 );
 
 CREATE TABLE CPU_PlacaMae (
@@ -73,8 +71,6 @@ alter table PC add
 (constraint fk_PlacaMae_ID_PlacaMae foreign key(ID_PlacaMae) references PlacaMae(ID_PlacaMae),
 constraint fk_Usuario_ID_Conta foreign key(ID_Conta) references Usuario(ID_Conta),
 constraint fk_CPU_ID_CPU foreign key(ID_CPU) references CPU(ID_CPU),
-constraint fk_PlacaVideo_ID_PlacaVideo foreign key(ID_PlacaVideo) references PlacaVideo(ID_PlacaVideo),
-constraint fk_MemoriaPC_ID_Memoria foreign key(ID_Memoria) references Memoria(ID_Memoria)
 );
 
 alter table CPU_PlacaMae add
