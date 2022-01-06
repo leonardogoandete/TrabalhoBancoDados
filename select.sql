@@ -11,7 +11,7 @@
         INNER JOIN PlacaVideo PV ON PPV.ID_PLACAVIDEO = PV.ID_PLACAVIDEO
         ORDER BY C.ID_Montagem asc;
 
-        --- sem gpu
+--- sem gpu
         SELECT C.ID_Montagem AS ID_PC, U.Nome AS NOME_USUARIO, M.NOME AS NOME_DA_PLACA_MAE, P.Modelo AS NOME_CPU, ME.nome AS NOME_MEMORIA
             FROM PC C
             INNER JOIN Usuario U ON C.ID_Conta = U.ID_Conta
@@ -22,8 +22,6 @@
             INNER JOIN PC_PlacaVideo PPV ON C.ID_MONTAGEM = PPV.ID_MONTAGEM
             WHERE PPV.ID_PlacaVideo is null
             ORDER BY C.ID_Montagem asc;
-
--------------------------------------- ====== --------------------------------------
 
 -- soma total da montagem --
 
