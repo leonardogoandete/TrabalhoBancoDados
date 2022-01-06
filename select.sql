@@ -43,3 +43,9 @@ SELECT U.ID_Conta AS ID_USUARIO, M.NOME AS NOME_DA_PLACA_MAE, M.Valor AS VALOR_P
     INNER JOIN PlacaMae M ON C.ID_PlacaMae = M.ID_PlacaMae
     GROUP BY U.ID_Conta, M.NOME, M.Valor HAVING (M.Valor) > 700
     ORDER BY U.ID_Conta;
+
+-- exibe total de compatibilidades de memoria para cada tipo de placa mae --
+select p.NOME, COUNT(pm.ID_MEMORIA) AS NRO_MEMORIAS_COMPATIVEIS
+from PLACAMAEMEMORIA pm
+inner join placamae p on pm.ID_PLACAMAE = p.ID_PLACAMAE
+GROUP BY p.NOME HAVING COUNT (pm.ID_MEMORIA) >= 5;
