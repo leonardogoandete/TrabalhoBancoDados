@@ -92,6 +92,19 @@ INNER JOIN PC_PlacaVideo PPV ON C.ID_MONTAGEM = PPV.ID_MONTAGEM
 WHERE PPV.ID_PlacaVideo is null AND m.ARQUITETURA = 'Intel'
 ;
 
+-- exibe a soma total de Montagens incluindo todas as peças sem GPU e exibe o montante total das montagens --
+-- agrupado por arquitetura -
+SELECT m.arquitetura, sum(M.Valor+P.Valor+ME.Valor+pv.valor) as VALOR_TOTAL
+FROM PC C
+INNER JOIN PlacaMae M ON C.ID_PlacaMae = M.ID_PlacaMae
+INNER JOIN CPU P ON C.ID_CPU = P.ID_CPU
+INNER JOIN PC_Memoria PM ON C.ID_Montagem = PM.id_montagem
+INNER JOIN Memoria ME ON PM.ID_MEMORIA = ME.ID_MEMORIA
+INNER JOIN PC_PlacaVideo PPV ON C.ID_MONTAGEM = PPV.ID_MONTAGEM
+INNER JOIN PlacaVideo PV ON PPV.ID_PLACAVIDEO = PV.ID_PLACAVIDEO
+GROUP BY m.ARQUITETURA
+;
+
 -- Visualizar quais placa maes se relacionam com mais de uma CPU e Memoria
 select p2.nome, count(p.ID_CPU) AS NRO_CPUs_RELACIONADAS, count(pm.ID_MEMORIA) AS NRO_MEM_RELACIONADAS
 from PC P
